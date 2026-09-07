@@ -1,156 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KiddoFunWorld | Fun, Learn & Explore</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>KiddoFunWorld | Where Little Minds Have Big Fun!</title>
 
     <style>
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f5fbff;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf3;
             color: #333;
         }
 
+
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            background: linear-gradient(90deg, #ff6b6b, #ffd166, #4ecdc4);
-            padding: 20px 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: white;
+
+            padding: 15px 6%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.10);
         }
 
         .logo {
-            color: white;
             font-size: 30px;
-            font-weight: bold;
-            text-shadow: 2px 2px #ff4081;
+            font-weight: 900;
+
+            background: linear-gradient(
+                90deg,
+                #ff4d88,
+                #ff9f43,
+                #20bf6b,
+                #45aaf2
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            margin-left: 20px;
+            color: #444;
             font-weight: bold;
+            transition: 0.3s;
         }
 
+        nav a:hover {
+            color: #ff4d88;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
+
+            min-height: 560px;
+
+            padding: 70px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #70e1f5, #ffd194);
-            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #c7f9ff,
+                    #fff1b8,
+                    #ffd6ec
+                );
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: auto;
         }
 
         .hero h1 {
-            font-size: 50px;
+            font-size: 56px;
+            color: #ff4d88;
+
+            text-shadow:
+                3px 3px white;
+
             margin-bottom: 20px;
-            text-shadow: 3px 3px #ff4d88;
+        }
+
+        .hero h2 {
+            font-size: 30px;
+            color: #444;
+            margin-bottom: 15px;
         }
 
         .hero p {
-            font-size: 22px;
-            margin-bottom: 30px;
+            font-size: 21px;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
 
-        .hero button {
-            padding: 14px 30px;
+        .hero-button {
+
             border: none;
-            border-radius: 30px;
+
+            padding: 17px 35px;
+
+            border-radius: 35px;
+
             background: #ff4d88;
+
             color: white;
-            font-size: 18px;
+
+            font-size: 19px;
+
             font-weight: bold;
+
             cursor: pointer;
+
+            box-shadow:
+                0 7px 15px rgba(255,77,136,0.3);
+
+            transition: 0.3s;
         }
+
+        .hero-button:hover {
+            transform: scale(1.08);
+        }
+
+        .characters {
+            font-size: 85px;
+
+            position: absolute;
+
+            bottom: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            animation: bounce 3s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+
+        }
+
+
+        /* =========================
+           GENERAL SECTION
+        ========================= */
 
         .section {
-            padding: 50px 7%;
+
+            padding: 70px 7%;
+
             text-align: center;
         }
 
-        .section h2 {
+        .section-title {
+
+            font-size: 38px;
+
             color: #ff4d88;
-            margin-bottom: 30px;
-            font-size: 32px;
+
+            margin-bottom: 15px;
         }
 
-        .categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+        .section-subtitle {
 
-        .category {
-            padding: 18px 25px;
-            border-radius: 20px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             font-size: 18px;
+
+            margin-bottom: 45px;
+
+            color: #666;
+        }
+
+
+        /* =========================
+           ACTIVITY CARDS
+        ========================= */
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 25px;
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+        .card {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 35px 25px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.09);
+
+            transition: 0.3s;
+
+            border: 3px solid transparent;
+        }
+
+        .card:hover {
+
+            transform: translateY(-10px) scale(1.02);
+
+            box-shadow:
+                0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+
+            font-size: 65px;
+
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+
+            font-size: 24px;
+
+            margin-bottom: 12px;
+
+            color: #444;
+        }
+
+        .card p {
+
+            line-height: 1.6;
+
+            color: #666;
+
+            margin-bottom: 20px;
+        }
+
+        .card button {
+
+            border: none;
+
+            padding: 11px 22px;
+
+            border-radius: 25px;
+
             font-weight: bold;
+
+            cursor: pointer;
+
+            background: #ffd166;
+
+            transition: 0.3s;
+        }
+
+        .card button:hover {
+            transform: scale(1.08);
+        }
+
+
+        /* =========================
+           COLORS FOR CARDS
+        ========================= */
+
+        .music {
+            border-color: #ff9f43;
+        }
+
+        .games {
+            border-color: #45aaf2;
+        }
+
+        .art {
+            border-color: #a55eea;
+        }
+
+        .stories {
+            border-color: #20bf6b;
+        }
+
+        .learning {
+            border-color: #f7b731;
         }
 
         .videos {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
+            border-color: #fc5c65;
         }
 
-        .video-card {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+        /* =========================
+           FEATURED SECTION
+        ========================= */
+
+        .featured {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff0f6,
+                    #eefaff
+                );
         }
 
-        .video-placeholder {
-            height: 150px;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
+
+        /* =========================
+           FUN FACTS
+        ========================= */
+
+        .fun-zone {
+
+            padding: 65px 7%;
+
+            text-align: center;
+
+            background: #fff;
         }
 
-        .video-card h3 {
-            padding: 15px;
+        .fun-box {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff1a8,
+                    #ffd6ec
+                );
+
+            border-radius: 30px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.10);
+        }
+
+        .fun-box h2 {
+
+            font-size: 34px;
+
             color: #ff4d88;
+
+            margin-bottom: 15px;
         }
+
+        .fun-box p {
+
+            font-size: 19px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+
+            background: #f1fbff;
+
+            text-align: center;
+
+            padding: 65px 7%;
+        }
+
+        .about-content {
+
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+        .about p {
+
+            font-size: 19px;
+
+            line-height: 1.8;
+
+            color: #555;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
+
             background: #292929;
+
             color: white;
+
             text-align: center;
-            padding: 30px;
+
+            padding: 45px 20px;
         }
 
-        @media(max-width: 700px) {
+        footer h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 12px;
+        }
+
+        footer p {
+
+            margin: 8px;
+        }
+
+        .footer-note {
+
+            margin-top: 25px;
+
+            font-size: 14px;
+
+            color: #bbb;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 800px) {
 
             header {
+
                 flex-direction: column;
+
                 gap: 15px;
             }
 
-            .hero h1 {
-                font-size: 36px;
+            nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px;
             }
 
             nav a {
-                margin: 5px;
+
+                font-size: 14px;
             }
+
+            .hero {
+
+                min-height: 520px;
+
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+
+                font-size: 40px;
+            }
+
+            .hero h2 {
+
+                font-size: 24px;
+            }
+
+            .hero p {
+
+                font-size: 17px;
+            }
+
+            .characters {
+
+                font-size: 60px;
+            }
+
+            .section-title {
+
+                font-size: 30px;
+            }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -159,58 +553,228 @@
     </div>
 
     <nav>
-        <a href="#">Home</a>
-        <a href="#categories">Categories</a>
-        <a href="#videos">Videos</a>
+
+        <a href="#home">Home</a>
+
+        <a href="#explore">Explore</a>
+
+        <a href="#featured">Videos</a>
+
         <a href="#about">About</a>
+
     </nav>
 
 </header>
 
 
-<section class="hero">
 
-    <h1>
-        🎈 Welcome to KiddoFunWorld! 🎈
-    </h1>
+<!-- =========================
+     HERO
+========================= -->
 
-    <p>
-        Fun • Learn • Laugh • Explore 🌟
-    </p>
+<section class="hero" id="home">
 
-    <button onclick="showMessage()">
-        🎬 Explore KiddoFunWorld
-    </button>
+    <div class="hero-content">
+
+        <h1>
+            🌈 Welcome to KiddoFunWorld!
+        </h1>
+
+        <h2>
+            Where Little Minds Have Big Fun! 🎉
+        </h2>
+
+        <p>
+            Sing • Play • Learn • Create • Explore
+        </p>
+
+        <button
+            class="hero-button"
+            onclick="startFun()">
+
+            🚀 LET'S HAVE FUN!
+
+        </button>
+
+    </div>
+
+
+    <div class="characters">
+
+        🦁 🐼 🐰 🐵
+
+    </div>
 
 </section>
 
 
-<section class="section" id="categories">
 
-    <h2>
-        🌈 Explore Categories
+<!-- =========================
+     EXPLORE
+========================= -->
+
+<section
+    class="section"
+    id="explore">
+
+    <h2 class="section-title">
+        ✨ Explore Kiddofunworld ✨
     </h2>
 
-    <div class="categories">
+    <p class="section-subtitle">
+        Choose your favorite adventure!
+    </p>
 
-        <div class="category">
-            🎵 Music
+
+    <div class="cards">
+
+
+        <!-- MUSIC -->
+
+        <div class="card music">
+
+            <div class="card-icon">
+                🎵
+            </div>
+
+            <h3>
+                Songs & Rhymes
+            </h3>
+
+            <p>
+                Sing, dance and enjoy cheerful
+                songs and nursery rhymes.
+            </p>
+
+            <button onclick="comingSoon('Songs & Rhymes')">
+                🎵 Explore
+            </button>
+
         </div>
 
-        <div class="category">
-            📚 Stories
+
+
+        <!-- GAMES -->
+
+        <div class="card games">
+
+            <div class="card-icon">
+                🎮
+            </div>
+
+            <h3>
+                Fun Games
+            </h3>
+
+            <p>
+                Play simple and exciting games
+                created especially for kids.
+            </p>
+
+            <button onclick="comingSoon('Fun Games')">
+                🎮 Play
+            </button>
+
         </div>
 
-        <div class="category">
-            🧠 Learning
+
+
+        <!-- ART -->
+
+        <div class="card art">
+
+            <div class="card-icon">
+                🎨
+            </div>
+
+            <h3>
+                Color & Draw
+            </h3>
+
+            <p>
+                Draw, color and let your
+                imagination come alive!
+            </p>
+
+            <button onclick="comingSoon('Color & Draw')">
+                🎨 Create
+            </button>
+
         </div>
 
-        <div class="category">
-            🐼 Animals
+
+
+        <!-- STORIES -->
+
+        <div class="card stories">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h3>
+                Story World
+            </h3>
+
+            <p>
+                Discover magical stories,
+                adventures and wonderful friends.
+            </p>
+
+            <button onclick="comingSoon('Story World')">
+                📚 Read
+            </button>
+
         </div>
 
-        <div class="category">
-            🎮 Fun & Games
+
+
+        <!-- LEARNING -->
+
+        <div class="card learning">
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <h3>
+                Learn & Play
+            </h3>
+
+            <p>
+                Learn ABCs, numbers, colors,
+                shapes and much more.
+            </p>
+
+            <button onclick="comingSoon('Learn & Play')">
+                🧠 Learn
+            </button>
+
+        </div>
+
+
+
+        <!-- VIDEOS -->
+
+        <div class="card videos">
+
+            <div class="card-icon">
+                📺
+            </div>
+
+            <h3>
+                Kids Videos
+            </h3>
+
+            <p>
+                Enjoy fun and educational
+                videos for children.
+            </p>
+
+            <button onclick="comingSoon('Kids Videos')">
+                📺 Watch
+            </button>
+
         </div>
 
     </div>
@@ -218,112 +782,225 @@
 </section>
 
 
-<section class="section" id="videos">
 
-    <h2>
-        ⭐ Featured Videos
+<!-- =========================
+     FEATURED
+========================= -->
+
+<section
+    class="section featured"
+    id="featured">
+
+    <h2 class="section-title">
+        ⭐ Featured Adventures
     </h2>
 
-    <div class="videos">
+    <p class="section-subtitle">
+        Something exciting is coming to Kiddofunworld!
+    </p>
 
-        <div class="video-card">
 
-            <div class="video-placeholder">
-                🎵
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🦈
             </div>
 
             <h3>
-                Happy Kids Songs
+                Baby Shark Fun
             </h3>
+
+            <p>
+                Sing, dance and swim along
+                with our ocean friends!
+            </p>
+
+            <button onclick="comingSoon('Baby Shark Fun')">
+                ▶ Watch
+            </button>
 
         </div>
 
 
-        <div class="video-card">
 
-            <div class="video-placeholder">
-                📚
-            </div>
+        <div class="card">
 
-            <h3>
-                Magical Stories
-            </h3>
-
-        </div>
-
-
-        <div class="video-card">
-
-            <div class="video-placeholder">
-                🧠
-            </div>
-
-            <h3>
-                Learn ABC
-            </h3>
-
-        </div>
-
-
-        <div class="video-card">
-
-            <div class="video-placeholder">
-                🐼
+            <div class="card-icon">
+                🦁
             </div>
 
             <h3>
                 Animal Friends
             </h3>
 
+            <p>
+                Meet wonderful animals
+                and learn fun facts.
+            </p>
+
+            <button onclick="comingSoon('Animal Friends')">
+                🐾 Explore
+            </button>
+
         </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🔤
+            </div>
+
+            <h3>
+                ABC Adventure
+            </h3>
+
+            <p>
+                Learn letters and discover
+                new words through play.
+            </p>
+
+            <button onclick="comingSoon('ABC Adventure')">
+                🔤 Start
+            </button>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<section class="section" id="about">
 
-    <h2>
-        🌟 About KiddoFunWorld
-    </h2>
+<!-- =========================
+     FUN ZONE
+========================= -->
 
-    <p>
-        Welcome to KiddoFunWorld!
-        A colorful place where children can
-        learn, laugh, sing and explore.
-    </p>
+<section class="fun-zone">
+
+    <div class="fun-box">
+
+        <h2>
+            🎉 The KiddoFunworld Fun Zone!
+        </h2>
+
+        <p>
+            Every day is an adventure!
+            Come back soon for songs,
+            games, stories, drawing,
+            learning activities and much more.
+        </p>
+
+        <br>
+
+        <p>
+            🌟 Learn something new.
+            🎵 Sing a song.
+            🎨 Create something amazing.
+            🎮 Play a game.
+            📚 Discover a story.
+        </p>
+
+    </div>
 
 </section>
 
 
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="about"
+    id="about">
+
+    <div class="about-content">
+
+        <h2 class="section-title">
+            💖 About KiddoFunWorld
+        </h2>
+
+        <p>
+            Welcome to KiddoFunWorld —
+            a colorful digital playground
+            designed to bring together
+            fun, creativity, learning
+            and imagination.
+        </p>
+
+        <br>
+
+        <p>
+            Our goal is simple:
+            <strong>
+                Learn • Play • Laugh • Explore
+            </strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
+    <h2>
+        🌈 KiddoFunWorld 🧸
+    </h2>
+
     <p>
-        🌈 KiddoFunWorld
+        Where Little Minds Have Big Fun!
     </p>
 
-    <br>
-
-    <p>
-        © 2026 KiddoFunWorld | Made with ❤️
+    <p class="footer-note">
+        © 2026 KiddoFunWorld
+        | Made with ❤️ for little explorers
     </p>
 
 </footer>
 
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-function showMessage() {
+    function startFun() {
 
-    alert(
-        "🎉 Welcome to KiddoFunWorld! \
-More exciting videos are coming soon!"
-    );
+        alert(
+            "🎉 Welcome to KiddoFunWorld! 🎉\n\n" +
+            "Get ready to Sing, Play, Learn and Explore! 🌈"
+        );
 
-}
+    }
+
+
+    function comingSoon(section) {
+
+        alert(
+            "🌟 " + section + " 🌟\n\n" +
+            "This exciting area is coming soon!\n\n" +
+            "We're building something magical for you! 🧸✨"
+        );
+
+    }
 
 </script>
 
+
 </body>
+
 </html>
